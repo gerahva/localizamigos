@@ -44,7 +44,7 @@ class RegistroAcivity : AppCompatActivity() {
                  launch(Dispatchers.Main) {
                      //Vamos a poner un Toast, el cual es un  mnsaje de corta duracion
                      //simplemente para que nos de y muestre los datos
-                 Toast.makeText(applicationContext, "Usuarios ${usuario.size}", Toast.LENGTH_LONG).show()
+                 Toast.makeText(applicationContext, "Usuarios ${usuario[0].nombre}", Toast.LENGTH_LONG).show()
                  }
 
 
