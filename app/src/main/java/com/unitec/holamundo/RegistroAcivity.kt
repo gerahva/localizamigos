@@ -37,14 +37,14 @@ class RegistroAcivity : AppCompatActivity() {
                //Generamos el servicio de nuestra clase serviciousuario
                var servicioUsuario=retrofit.create(ServicioUsuario::class.java)
                //ahora si, invocamos a nuestro metodo buscarTodos
-               var hacerEnvio=servicioUsuario.buscarTodos()
-              var usuario=      hacerEnvio.execute().body()!!
+        var hacerEnvio=servicioUsuario.registrarse(usuario)
+        var estatus=      hacerEnvio.execute().body()!!
                  //finalemente nos enlazamos a la interfaz de usuario por medio
                  //de otra corutina ya que debe estar en thread separado
                  launch(Dispatchers.Main) {
                      //Vamos a poner un Toast, el cual es un  mnsaje de corta duracion
                      //simplemente para que nos de y muestre los datos
-                 Toast.makeText(applicationContext, "Usuarios ${usuario[0].nombre}", Toast.LENGTH_LONG).show()
+                 Toast.makeText(applicationContext, "Usuarios ${estatus.mensaje}", Toast.LENGTH_LONG).show()
                  }
 
 
