@@ -7,6 +7,9 @@ import kotlinx.android.synthetic.main.activity_registro.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
@@ -38,13 +41,14 @@ class RegistroAcivity : AppCompatActivity() {
                var servicioUsuario=retrofit.create(ServicioUsuario::class.java)
                //ahora si, invocamos a nuestro metodo buscarTodos
         var hacerEnvio=servicioUsuario.registrarse(usuario)
-        var estatus=      hacerEnvio.execute().body()!!
+                 var estatus=Estatus()
+         var estatus=      hacerEnvio.execute().body()!!
                  //finalemente nos enlazamos a la interfaz de usuario por medio
                  //de otra corutina ya que debe estar en thread separado
                  launch(Dispatchers.Main) {
                      //Vamos a poner un Toast, el cual es un  mnsaje de corta duracion
                      //simplemente para que nos de y muestre los datos
-                 Toast.makeText(applicationContext, "Usuarios ${estatus.mensaje}", Toast.LENGTH_LONG).show()
+                 Toast.makeText(applicationContext,estatus.mensaje, Toast.LENGTH_LONG).show()
                  }
 
 
