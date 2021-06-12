@@ -41,7 +41,7 @@ class RegistroAcivity : AppCompatActivity() {
                var servicioUsuario=retrofit.create(ServicioUsuario::class.java)
                //ahora si, invocamos a nuestro metodo buscarTodos
         var hacerEnvio=servicioUsuario.registrarse(usuario)
-                 var estatus=Estatus()
+
          var estatus=      hacerEnvio.execute().body()!!
                  //finalemente nos enlazamos a la interfaz de usuario por medio
                  //de otra corutina ya que debe estar en thread separado
