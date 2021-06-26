@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
                      var i=Intent(this, RegistroAcivity::class.java)
                      startActivity(i)
                  }
+ //Manejo de evento del MapitaAcivity
+        ubicar.setOnClickListener {
+          startActivity(Intent(this, MapitaActivity::class.java))  
+        }
 
         //Este codigo no se relaciona al proycto es para explicar una lambda
         //Vamos a comprobar que una funcion en los lenguajes funcionales es un
@@ -47,7 +51,7 @@ class MainActivity : AppCompatActivity() {
              var funcion=    {x:Int->x*2}
         Log.i("JC", "Vamos a invocar nuestra funcion(dato) ${funcion.invoke(5)} y listo")
              var suma=4+5
-        var  sumar = {x:Int,y:Int->x+y}
+        var  sumar = {x:Int,y:Int  ->  x+y}
 
         Log.i("JC", "La variable suma es $suma y eso es todo")
         Log.i("JC", "La expresion no se invoca ${sumar(4,2)} y eso es todo")

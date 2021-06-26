@@ -23,6 +23,9 @@ class RegistroAcivity : AppCompatActivity() {
              //Aqui este bloque vamos a pedirle a nuestros campos de texto sus
              //los contenidos escritos en ellos y con ellos creamos el OBJETO Usuario
               var usuario=Usuario()
+
+            //pOR ESTOS TRES RENGLONES A LA ACTIVITY SE LE DENOMINA pRESENTER:
+            //PORQUE PRESENTA AL MODELO SUS ASIGNACIONS OBTENIDAS A PARTIR DE LA UI.
              usuario.nombre=textoNombre.text.toString()
              usuario.email=textoEmail.text.toString()
              usuario.nickname=textoNickname.text.toString()
@@ -34,7 +37,7 @@ class RegistroAcivity : AppCompatActivity() {
              //Corutina.
              GlobalScope.launch(Dispatchers.IO){
                  var retrofit=Retrofit.Builder()
-                     .baseUrl("http://192.168.100.101:9000/")
+                     .baseUrl("https://localiza-amigos2.herokuapp.com/")
                      .addConverterFactory(JacksonConverterFactory.create())
                      .build()
                //Generamos el servicio de nuestra clase serviciousuario
@@ -49,6 +52,7 @@ class RegistroAcivity : AppCompatActivity() {
                      //Vamos a poner un Toast, el cual es un  mnsaje de corta duracion
                      //simplemente para que nos de y muestre los datos
                  Toast.makeText(applicationContext,estatus.mensaje, Toast.LENGTH_LONG).show()
+
                  }
 
 
