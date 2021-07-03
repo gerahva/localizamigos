@@ -42,7 +42,27 @@ class MainActivity : AppCompatActivity() {
                  }
  //Manejo de evento del MapitaAcivity
         ubicar.setOnClickListener {
-          startActivity(Intent(this, MapitaActivity::class.java))  
+          startActivity(Intent(this, MapitaActivity::class.java))
+          /*************************************************************
+            A continuacion vamos a enviar un usuario fake con su localizacion fake
+           para verificar que el back end lo reciba y lo guarde
+           NOTA: El usuario debe ya existir en la base de datos.
+           *****************************************************************/
+             //Primero generamos una localizacion fake: =19.412497,-99.145667
+            var loca=Localizacion();
+            loca.lat=19.412497
+            loca.lng=-99.145667
+            //CReamos el usuario fake
+            var usuario=Usuario();
+            var arrgloLoca=ArrayList<Localizacion>()
+            //agregamos la localizacion
+            usuario.localizacion=arrgloLoca
+            //Agregamos el email fake
+            usuario.email="rapidclimate@gmail.com"
+            //En la siguiente parte enviamos al back end a este usuario a
+            //api/localizaciones
+
+
         }
 
         //Este codigo no se relaciona al proycto es para explicar una lambda
