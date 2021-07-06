@@ -16,4 +16,7 @@ interface ServicioUsuario {
     //El siguiente es el de registrarse
     @POST("api/usuario")
     fun registrarse(@Body usuario:Usuario ):Call<Estatus>
+
+    @POST("api/localizaciones")
+    fun guardarLoca(@Body usuario: Usuario):Call<Estatus>
 }

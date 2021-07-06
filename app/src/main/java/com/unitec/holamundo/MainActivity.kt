@@ -5,7 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.jackson.JacksonConverterFactory
 
 /*
 Dentro de un proyecto android que usa el patron de Diseno MVP la  MainActivity co
@@ -54,13 +60,32 @@ class MainActivity : AppCompatActivity() {
             loca.lng=-99.145667
             //CReamos el usuario fake
             var usuario=Usuario();
-            var arrgloLoca=ArrayList<Localizacion>()
+            var arregloLoca=ArrayList<Localizacion>()
             //agregamos la localizacion
-            usuario.localizacion=arrgloLoca
+
             //Agregamos el email fake
             usuario.email="rapidclimate@gmail.com"
+            //Agregamos la localizacion al arreglo
+            arregloLoca.add(loca)
+            usuario.localizacion=arregloLoca
+
             //En la siguiente parte enviamos al back end a este usuario a
             //api/localizaciones
+            GlobalScope.launch(Dispatchers.IO){
+       var retrofit= Retrofit.Builder()
+           .baseUrl("http://192.168.100.101:9000/")
+           .addConverterFactory(JacksonConverterFactory.create())
+           .build()
+                var servicioLoca=retrofit.create(ServicioUsuario::class.java)
+                var hacerEnvio=servicioLoca.guardarLoca(usuario)
+                var estatus=hacerEnvio.execute().body()!!
+
+
+                launch(Dispatchers.Main){
+               Toast.makeText(applicationContext, estatus.mensaje, Toast.LENGTH_LONG).show()
+                }
+            }
+
 
 
         }
