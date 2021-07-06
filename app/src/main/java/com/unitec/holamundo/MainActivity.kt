@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             //api/localizaciones
             GlobalScope.launch(Dispatchers.IO){
        var retrofit= Retrofit.Builder()
-           .baseUrl("http://192.168.100.101:9000/")
+           .baseUrl("https://localiza-amigos2.herokuapp.com/")
            .addConverterFactory(JacksonConverterFactory.create())
            .build()
                 var servicioLoca=retrofit.create(ServicioUsuario::class.java)
