@@ -64,27 +64,7 @@ class MainActivity : AppCompatActivity() {
             //agregamos la localizacion
 
             //Agregamos el email fake
-            usuario.email="rapidclimate@gmail.com"
-            //Agregamos la localizacion al arreglo
-            arregloLoca.add(loca)
-            usuario.localizacion=arregloLoca
 
-            //En la siguiente parte enviamos al back end a este usuario a
-            //api/localizaciones
-            GlobalScope.launch(Dispatchers.IO){
-       var retrofit= Retrofit.Builder()
-           .baseUrl("https://localiza-amigos2.herokuapp.com/")
-           .addConverterFactory(JacksonConverterFactory.create())
-           .build()
-                var servicioLoca=retrofit.create(ServicioUsuario::class.java)
-                var hacerEnvio=servicioLoca.guardarLoca(usuario)
-                var estatus=hacerEnvio.execute().body()!!
-
-
-                launch(Dispatchers.Main){
-               Toast.makeText(applicationContext, estatus.mensaje, Toast.LENGTH_LONG).show()
-                }
-            }
 
 
 
