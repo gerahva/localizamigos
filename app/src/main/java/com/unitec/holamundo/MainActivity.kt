@@ -62,8 +62,32 @@ class MainActivity : AppCompatActivity() {
             var usuario=Usuario();
             var arregloLoca=ArrayList<Localizacion>()
             //agregamos la localizacion
+            arregloLoca.add(loca)
+            //Agregamos el email fake que tiene que ser el que  esribist para tu registro
+            usuario.email="rapidclimate@gmail.com"
+            usuario.localizacion=arregloLoca;
+            //Con esto ya podemos generar nuestro objeto a enviar!!!
+            //Para ello debemos crear una corutina de tipo IO para enviar la info
+            //y una de tipo MAIN, para recibir.
+            GlobalScope.launch(Dispatchers.IO){
+           //Primero construimos el objeto retrofit para poder  trabaa el servicio
+              var retrofit =Retrofit.Builder()
+                  .baseUrl("https://localiza-amigos2.herokuapp.com/")
+                  .addConverterFactory(JacksonConverterFactory.create())
+                  .build()
+              //Ahora si, creamos la variable de nuestro servicio a partir del objeto retorfi
+              var servicioUsuario=retrofit.create(ServicioUsuario::class.java)
+               var hacerEnvio =servicioUsuario.guardarLoca(usuario)
+               //Preparamos el retorno del servicio
+               var estatus=hacerEnvio.execute().body()!!
 
-            //Agregamos el email fake
+                //CReamos de una vez la de respuesta
+
+                launch(Dispatchers.Main){
+            Toast.makeText(applicationContext, estatus.mensaje,Toast.LENGTH_LONG).show()
+                }
+
+            }
 
 
 
