@@ -1,6 +1,7 @@
 package com.unitec.holamundo
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import java.io.Serializable
 
 /*
  La siguiente anotacion se debe utilizar cuando vas a enviar este objeto
@@ -8,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
  registramos, no enviamos la localizacion.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Usuario {
+class Usuario:Serializable {
     var nombre:String?=null
     var email:String?=null
     var nickname:String?=null

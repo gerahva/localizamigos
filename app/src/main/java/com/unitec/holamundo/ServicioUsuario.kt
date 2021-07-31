@@ -19,4 +19,7 @@ interface ServicioUsuario {
 
     @POST("api/localizaciones")
     fun guardarLoca(@Body usuario: Usuario):Call<Estatus>
+
+    @GET("api/localizaciones")
+    fun buscarLocalizados(): Call<ArrayList<Usuario>>
 }

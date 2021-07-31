@@ -46,6 +46,11 @@ class MainActivity : AppCompatActivity() {
                      var i=Intent(this, RegistroAcivity::class.java)
                      startActivity(i)
                  }
+        //Inciso c.
+        localizar.setOnClickListener {
+         startActivity(   Intent(this, ActivityLista::class.java))
+        }
+
  //Manejo de evento del MapitaAcivity
         ubicar.setOnClickListener {
           startActivity(Intent(this, MapitaActivity::class.java))

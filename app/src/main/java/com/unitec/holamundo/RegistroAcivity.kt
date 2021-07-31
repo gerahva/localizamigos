@@ -7,9 +7,6 @@ import kotlinx.android.synthetic.main.activity_registro.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
@@ -26,8 +23,8 @@ class RegistroAcivity : AppCompatActivity() {
 
             //pOR ESTOS TRES RENGLONES A LA ACTIVITY SE LE DENOMINA pRESENTER:
             //PORQUE PRESENTA AL MODELO SUS ASIGNACIONS OBTENIDAS A PARTIR DE LA UI.
-             usuario.nombre=textoNombre.text.toString()
-             usuario.email=textoEmail.text.toString()
+             usuario.nombre=txtNombre.text.toString()
+             usuario.email=txtEmail.text.toString()
              usuario.nickname=textoNickname.text.toString()
 
              //Esto ya lo tenemos que mandar al back end para que guarde!!!!
